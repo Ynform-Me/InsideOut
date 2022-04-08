@@ -36,13 +36,15 @@
                         (ask-user "Clojure project not found.  Create default project layout? (y/n)"
                                   #{"y" "Y" "n" "N"}))]
     (if (= create-project "y")
-      (let [readme  (slurp (io/resource "README.md"))
-            userclj (slurp (io/resource "user.clj.txt"))]
+      (let [readme    (slurp (io/resource "README.md"))
+            userclj   (slurp (io/resource "user.clj.txt"))
+            gitignore (slurp (io/resource "gitignore.txt"))]
         (-> (File. "src/insideout") (.mkdirs))
         (-> (File. "resources") (.mkdirs))
 
         (spit "README.md" readme)
         (spit "src/insideout/user.clj" userclj)
+        (spit ".gitignore" gitignore)
 
         (println "Created standard project structure.  See README.md for details."))
 
