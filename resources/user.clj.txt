@@ -11,8 +11,10 @@
 
 
 (defonce ultra-repl
-  (dynamo/require-libs '[[venantius/ultra "0.6.0"]]
-                       '[ultra.repl :as fancy]))
+  (dynamo/require-libs '[[venantius/ultra "0.6.0"]
+                         [aprint "0.1.3"]]
+                       '[[ultra.repl :as fancy]
+                         [aprint.core :refer [aprint]]]))
 
 
 (defn pre-reload
