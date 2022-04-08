@@ -7,20 +7,18 @@
  [['reply "0.5.1"]]
  ['reply.main])
 
+(def default-opts {:custom-eval '(do (println "REPL-y launching..."))
+                   :port 9999})
 
 (defn background-repl-y!
   "Start repl-y in a background thread."
-  []
+  [opts]
   (let [t (Thread.
-           (fn [] ((ns-resolve 'reply.main 'launch)
-                  {:custom-eval '(do (println "Welcome to inside-out!"))
-                   :port 9999})))]
+           (fn [] ((ns-resolve 'reply.main 'launch) (or opts default-opts))))]
     (.start t)))
 
 
 (defn start!
   "Start repl-y using the current thread."
-  []
-  ((ns-resolve 'reply.main 'launch)
-   {:custom-eval '(do (println "REPL-y launching..."))
-    :port 9999}))
+  [opts]
+  ((ns-resolve 'reply.main 'launch) (or opts default-opts)))
