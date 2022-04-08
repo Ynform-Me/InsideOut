@@ -37,7 +37,7 @@
   (println "Starting auto namespace reloader...")
   (reload/reload-classpath-dirs)
 
-  (println "Starting network REPL server...")
+  (println "Starting network REPL server.  You can connect to this from your IDE or editor...")
   (let [nrepl (nrepl-server/start! :cider)
         port  (:port nrepl)]
 
