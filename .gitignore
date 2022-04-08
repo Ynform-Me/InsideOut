@@ -6,9 +6,15 @@ pom.xml.asc
 /classes/
 /target/
 /checkouts/
+/bin/
 .lein-deps-sum
 .lein-repl-history
 .lein-plugins/
 .lein-failures
 .nrepl-port
+.nrepl-history
 .cpcache/
+.clj-kondo/
+.lsp/
+.portal/
+.vscode/

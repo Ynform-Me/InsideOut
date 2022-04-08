@@ -1,0 +1,44 @@
+(ns insideout.user
+  "A default `user.clj` that starts an `nrepl` server (and interactive REPL) and
+  enables namepace auto-reload."
+  {:on-pre-reload 'pre-reload
+   :on-post-reload 'post-reload}
+  (:require [clojure.pprint     :refer [pprint]]
+            [insideout.nrepl    :as nrepl-server]
+            [insideout.repl-y   :as repl-y]
+            [insideout.dynamo   :as dynamo]
+            [insideout.reload   :as reload]))
+
+
+(defonce ultra-repl
+  (dynamo/require-libs '[[venantius/ultra "0.6.0"]]
+                       '[ultra.repl :as fancy]))
+
+
+(defn pre-reload
+  "When the namespace is about to be reloaded you might want to save state, close database connections,
+  tear down parts of the UI, etc.  Use a namespace `pre-reload` function for this purpose."
+  []
+  (println "Called just before this namespace will be reloaded; registered in the above `ns` form."))
+
+(defn post-reload
+  "When the namespace has just been reloaded you might want to restore state, reopen database connections,
+  refresh parts of the UI, etc.  Use a namespace `post-reload` function for this purpose."
+  []
+  (println "Called just after this namespace has been reloaded; registered in the above `ns` form."))
+
+
+
+(defn -main [& args]
+  (println "Starting...")
+
+  (pprint (nrepl-server/start! :cider))
+  (fancy/configure-repl! nil true)
+  (println "nrepl started.")
+
+  (reload/reload-classpath-dirs)
+  (println "Automatic namespace reloading is enabled.")
+
+  (println "Starting interactive REPL.")
+  (repl-y/start!))
+

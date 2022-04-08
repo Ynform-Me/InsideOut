@@ -1,0 +1,250 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Connecting ...
+; No nrepl port file found.
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉>  ; Use `alt+enter` to evaluate
+(ns-publics)
+clojure.lang.ArityException: Wrong number of args (0) passed to: core/ns-publics
+; class clojure.lang.ArityException
+clj꞉user꞉>
+(ns-publics *ns*)
+{}
+clj꞉user꞉>
+; nREPL Connection was closed
+; Connecting ...
+; No nrepl port file found.
+; Bad url: localhost::8008
+; Connecting ...
+; No nrepl port file found.
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉>
+nil
+clj꞉from.cemerick.pomegranate.aether꞉>
+nil
+clj꞉from.cemerick.pomegranate꞉>
+                    java.lang.Exception: Found lib name 'java.io' containing period with prefix ':import'.  lib names inside prefix lists must not contain periods
+clojure.lang.Compiler$CompilerException: java.lang.Exception: Found lib name 'java.io' containing period with prefix ':import'.  lib names inside prefix lists must not contain periods, compiling:(/var/home/djo/code/InsideOut/src/insideout/core.clj:1:1)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.core꞉>
+nil
+clj꞉from.cemerick.pomegranate꞉>
+nil
+clj꞉from.cemerick.pomegranate꞉>
+nil
+clj꞉insideout.dynamo꞉>
+nil
+clj꞉insideout.core꞉>
+#{"n" "Y" "y" "N"}
+clj꞉insideout.core꞉>
+             java.lang.RuntimeException: Unable to resolve symbol: ask-user in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: ask-user in this context, compiling:(/var/home/djo/code/InsideOut/src/insideout/core.clj:31:3)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.core꞉>
+#'insideout.core/ask-user
+clj꞉insideout.core꞉>
+Create default project layout? (y/n)
+a
+Sending interrupt.
+; Evaluation was interrupted
+clj꞉insideout.core꞉>
+java.lang.InterruptedException:
+             java.lang.RuntimeException: Unable to resolve symbol: a in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: a in this context, compiling:(/var/home/djo/code/InsideOut/.calva/output-window/output.calva-repl:128:1)
+             java.lang.RuntimeException: Unable to resolve symbol: a in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: a in this context, compiling:(/var/home/djo/code/InsideOut/.calva/output-window/output.calva-repl:128:1)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.core꞉>
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.core꞉>
+             java.lang.RuntimeException: No such namespace: str
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such namespace: str, compiling:(/var/home/djo/code/InsideOut/src/insideout/core.clj:21:24)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.core꞉>
+nil
+clj꞉insideout.core꞉>
+#'insideout.core/ask-user
+clj꞉insideout.core꞉>
+Create default project layout? (y/n)
+a
+Sending interrupt.
+; Evaluation was interrupted
+clj꞉insideout.core꞉>
+java.lang.InterruptedException:
+             java.lang.RuntimeException: Unable to resolve symbol: a in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: a in this context, compiling:(/var/home/djo/code/InsideOut/.calva/output-window/output.calva-repl:128:1)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.core꞉>
+#function[clojure.string/trim]
+clj꞉insideout.core꞉>
+"a"
+clj꞉insideout.core꞉>
+#'insideout.core/ask-user
+clj꞉insideout.core꞉>
+Create default project layout? (y/n)
+"a"
+clj꞉insideout.core꞉>
+Create default project layout? (y/n)
+Please enter a 'y' or 'n'
+Create default project layout? (y/n)
+"y"
+clj꞉insideout.core꞉>
+#'insideout.core/ask-user
+clj꞉insideout.core꞉>
+Create default project layout? (y/n)
+Create default project layout? (y/n)
+"n"
+clj꞉insideout.core꞉>
+nil
+clj꞉insideout.core꞉>
+             java.lang.RuntimeException: Unable to resolve symbol: user-main-fn in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: user-main-fn in this context, compiling:(/var/home/djo/code/InsideOut/src/insideout/core.clj:49:24)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.core꞉>
+#'insideout.core/user-main-fn
+clj꞉insideout.core꞉>
+#'insideout.core/ask-user
+clj꞉insideout.core꞉>
+#'insideout.core/default-main
+clj꞉insideout.core꞉>
+nil
+clj꞉insideout.dynamo꞉>
+java.lang.IllegalAccessError: file-details does not exist
+; class java.lang.IllegalAccessError
+clj꞉insideout.reload꞉>
+java.lang.IllegalAccessError: file-details does not exist
+; class java.lang.IllegalAccessError
+clj꞉insideout.reload꞉>
+             java.lang.RuntimeException: No such namespace: str
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such namespace: str, compiling:(/var/home/djo/code/InsideOut/src/insideout/foundation.clj:14:9)
+             java.lang.RuntimeException: No such namespace: io
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such namespace: io, compiling:(/var/home/djo/code/InsideOut/src/insideout/foundation.clj:20:46)
+             java.lang.RuntimeException: No such namespace: io
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such namespace: io, compiling:(/var/home/djo/code/InsideOut/src/insideout/foundation.clj:33:38)
+             java.lang.RuntimeException: No such var: repl/install-pretty-exceptions
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: repl/install-pretty-exceptions, compiling:(/var/home/djo/code/InsideOut/src/insideout/foundation.clj:110:3)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.foundation꞉>
+             java.lang.RuntimeException: No such var: repl/install-pretty-exceptions
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: repl/install-pretty-exceptions, compiling:(/var/home/djo/code/InsideOut/src/insideout/foundation.clj:113:3)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.foundation꞉>
+             java.lang.RuntimeException: No such var: r/install-pretty-exceptions
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: r/install-pretty-exceptions, compiling:(/var/home/djo/code/InsideOut/src/insideout/foundation.clj:113:3)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.foundation꞉>
+             java.lang.RuntimeException: No such var: r/install-pretty-exceptions
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: r/install-pretty-exceptions, compiling:(/var/home/djo/code/InsideOut/src/insideout/foundation.clj:113:3)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.foundation꞉>
+             java.lang.RuntimeException: No such var: e/format-exception
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: e/format-exception, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/repl.clj:22:10)
+             java.lang.RuntimeException: No such var: e/write-exception
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: e/write-exception, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/repl.clj:38:9)
+             java.lang.RuntimeException: No such var: e/write-exception*
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: e/write-exception*, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/repl.clj:122:4)
+; class clojure.lang.Compiler$CompilerException
+clj꞉from.io.aviso.repl꞉>
+java.lang.IllegalAccessError: bold-red-font does not exist
+             java.lang.RuntimeException: Unable to resolve symbol: yellow-font in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: yellow-font in this context, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/exception.clj:23:1)
+             java.lang.RuntimeException: Unable to resolve symbol: Pattern in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: Pattern in this context, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/exception.clj:139:7)
+             java.lang.RuntimeException: Unable to resolve symbol: ExceptionInfo in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: ExceptionInfo in this context, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/exception.clj:404:7)
+             java.lang.RuntimeException: No such namespace: c
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such namespace: c, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/exception.clj:460:3)
+             java.lang.RuntimeException: Unable to resolve symbol: Named in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: Named in this context, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/exception.clj:503:7)
+             java.lang.RuntimeException: No such namespace: c
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such namespace: c, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/exception.clj:531:35)
+             java.lang.RuntimeException: No such namespace: w
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such namespace: w, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/exception.clj:638:4)
+; class clojure.lang.Compiler$CompilerException
+clj꞉from.io.aviso.exception꞉>
+             java.lang.RuntimeException: No such var: w/write
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: w/write, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:15:3)
+             java.lang.RuntimeException: No such var: w/writeln
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: w/writeln, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:31:9)
+             java.lang.RuntimeException: No such var: ansi/visual-length
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: ansi/visual-length, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:45:29)
+             java.lang.RuntimeException: No such var: ansi/visual-length
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: ansi/visual-length, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:61:22)
+             java.lang.RuntimeException: No such var: w/writeln
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: w/writeln, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:133:11)
+             java.lang.RuntimeException: No such var: ansi/visual-length
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: ansi/visual-length, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:144:17)
+; class clojure.lang.Compiler$CompilerException
+clj꞉from.io.aviso.columns꞉>
+#'from.io.aviso.writer/into-string
+clj꞉from.io.aviso.writer꞉>
+             java.lang.RuntimeException: No such var: ansi/visual-length
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: ansi/visual-length, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:45:29)
+             java.lang.RuntimeException: No such var: ansi/visual-length
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: ansi/visual-length, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:61:22)
+             java.lang.RuntimeException: No such var: ansi/visual-length
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: No such var: ansi/visual-length, compiling:(/var/home/djo/code/InsideOut/src/from/io/aviso/columns.clj:144:17)
+; class clojure.lang.Compiler$CompilerException
+clj꞉from.io.aviso.columns꞉>
+#'from.io.aviso.ansi/visual-length
+clj꞉from.io.aviso.ansi꞉>
+#'from.io.aviso.exception/parse-exception
+clj꞉from.io.aviso.exception꞉>
+#'from.io.aviso.repl/format-exception
+clj꞉from.io.aviso.repl꞉>
+#'insideout.foundation/init
+clj꞉insideout.foundation꞉>
+             java.lang.RuntimeException: Unable to resolve symbol: let-map in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: let-map in this context, compiling:(/var/home/djo/code/InsideOut/src/insideout/reload.clj:35:29)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.reload꞉>
+#'insideout.foundation/init
+clj꞉insideout.foundation꞉>
+             java.lang.RuntimeException: Unable to resolve symbol: let-map in this context
+clojure.lang.Compiler$CompilerException: java.lang.RuntimeException: Unable to resolve symbol: let-map in this context, compiling:(/var/home/djo/code/InsideOut/src/insideout/reload.clj:35:29)
+; class clojure.lang.Compiler$CompilerException
+clj꞉insideout.reload꞉>
+#'insideout.reload/reload-classpath-dirs
+clj꞉insideout.reload꞉>
+#'insideout.reload/reload-classpath-dirs
+clj꞉insideout.reload꞉>
+#'insideout.nrepl/stop!
+clj꞉insideout.nrepl꞉>
+(vec "foo")
+[\f \o \o]
+clj꞉insideout.nrepl꞉>
+(vector "foo")
+["foo"]
+clj꞉insideout.nrepl꞉>
+(vector ["foo"])
+[["foo"]]
+clj꞉insideout.nrepl꞉>
+(flatten (vector "foo"))
+("foo")
+clj꞉insideout.nrepl꞉>
+(type (namespace 'foo/bar
+                 ))
+java.lang.String
+clj꞉insideout.nrepl꞉>
+#'insideout.foundation/maybe-vomit
+clj꞉insideout.foundation꞉>
