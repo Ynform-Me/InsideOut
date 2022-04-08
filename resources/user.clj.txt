@@ -1,6 +1,9 @@
 (ns insideout.user
   "A default `user.clj` that starts an `nrepl` server (and interactive REPL) and
-  enables namepace auto-reload."
+  enables namepace auto-reload.
+
+  Normally this is where you would put utilities you will access interactively
+  from the REPL."
   {:on-pre-reload 'pre-reload
    :on-post-reload 'post-reload}
   (:require [clojure.pprint     :refer [pprint]]
@@ -9,7 +12,7 @@
             [insideout.dynamo   :as dynamo]
             [insideout.reload   :as reload]))
 
-
+;; We can dynamically load and require libraries from Maven repositories...
 (defonce ultra-repl
   (dynamo/require-libs '[[venantius/ultra "0.6.0"]
                          [aprint "0.1.3"]]
@@ -30,17 +33,18 @@
   (println "Called just after this namespace has been reloaded; registered in the above `ns` form."))
 
 
-
 (defn -main [& args]
-  (println "Starting...")
-
-  (pprint (nrepl-server/start! :cider))
-  (fancy/configure-repl! nil true)
-  (println "nrepl started.")
-
+  (println "Starting auto namespace reloader...")
   (reload/reload-classpath-dirs)
-  (println "Automatic namespace reloading is enabled.")
 
-  (println "Starting interactive REPL.")
-  (repl-y/start!))
+  (println "Starting network REPL server...")
+  (let [nrepl (nrepl-server/start! :cider)
+        port  (:port nrepl)]
 
+    (fancy/configure-repl! {} true)
+
+    (println "Launching interactive REPL...")
+    (repl-y/start!
+     {:eval  `(in-ns *ns*)
+      :attach (str "localhost:" port)
+      :color  true})))
