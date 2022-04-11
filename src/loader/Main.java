@@ -6,8 +6,8 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Thread currentThread = Thread.currentThread();
-        ClassLoader acl = new clojure.lang.DynamicClassLoader(currentThread.getContextClassLoader());
-        currentThread.setContextClassLoader(acl);
+        ClassLoader l = new clojure.lang.DynamicClassLoader(currentThread.getContextClassLoader());
+        currentThread.setContextClassLoader(l);
 
         String[] dashM = new String[] {"--main", "insideout.core"};
         String [] allArgs = new ArrayList<String>(){
