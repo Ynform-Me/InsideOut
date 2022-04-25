@@ -16,7 +16,6 @@
                  ;; Git support (TBD)
 
                  ;; Maven resolver / Pomegranate
-                 [org.tcrawley/dynapath "1.0.0"]
                  [org.apache.maven.resolver/maven-resolver-api  "1.6.3"]
                  [org.apache.maven.resolver/maven-resolver-spi  "1.6.3"]
                  [org.apache.maven.resolver/maven-resolver-util "1.6.3"]
