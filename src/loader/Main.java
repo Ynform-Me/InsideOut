@@ -9,7 +9,7 @@ public class Main {
         ClassLoader l = new clojure.lang.DynamicClassLoader(currentThread.getContextClassLoader());
         currentThread.setContextClassLoader(l);
 
-        String[] dashM = new String[] {"--main", "insideout.core"};
+        String[] dashM = new String[] {"--main", "loader.core"};
         String [] allArgs = new ArrayList<String>(){
                 {addAll(Arrays.asList(dashM));
                  addAll(Arrays.asList(args));}

@@ -1,4 +1,4 @@
-(ns insideout.core
+(ns loader.core
   "InsideOut program launcher."
   (:require
    [clojure.java.io  :as io]
@@ -13,8 +13,7 @@
   user-main-fn 'insideout.user/-main)
 
 (defn ask-user
-  "Prompt user for input until validate returns falsey.  If validate returns
-   truthy, its return value is printed as the error message/value."
+  "Prompt user for input until validate returns falsey."
   [prompt-string validate]
   (loop []
     (print (str prompt-string " "))
