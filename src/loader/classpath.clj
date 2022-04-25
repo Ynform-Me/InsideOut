@@ -4,15 +4,14 @@
            [clojure.lang DynamicClassLoader]))
 
 
-(defn ^DynamicClassLoader
-  dyn-classloader
+(defn dyn-classloader
   "Return the dynamic classloader for the thread's context classloader.  If a dynamic
    classloader hasn't been added to the current thread, one (that delegates to the thread's
    current classloader) is created and registered."
-  ([]
+  (^DynamicClassLoader []
    (dyn-classloader (Thread/currentThread)))
 
-  ([thread]
+  (^DynamicClassLoader [thread]
    (let [cl (-> thread .getContextClassLoader)]
      (if (instance? DynamicClassLoader cl)
        cl
@@ -20,13 +19,13 @@
          (-> thread (.setContextClassloader dcl)))))))
 
 
-(defn ^Thread new-thread
+(defn new-thread
   "Return a new thread preconfigured with the InsideOut classloader.  Doesn't call `start`."
-  ([]
+  (^Thread []
    (let [t (Thread.)]
      (.setContextClassloader t (dyn-classloader))
      t))
-  ([runnable]
+  (^Thread [^Runnable runnable]
    (let [t (Thread. runnable)]
      (.setContextClassloader t (dyn-classloader))
      t)))
