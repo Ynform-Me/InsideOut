@@ -149,3 +149,66 @@
              (conj mapfns# result#)
              [mapfns# result#])
            mapfns#)))))
+
+;; Object orientation implemented on top of let-map and letfn-map -------------------------------------------
+
+
+(defn- find-member [o method-key]
+  (let [root-value (get o method-key)]
+    (if root-value
+      root-value
+      (when-let [_m (:methods o)]
+        (find-member _m method-key))
+      (when-let [_clazzs (:parent-classes o)]
+        (if (seq? _clazzs)
+          (doseq [_clazz _clazzs]
+            (find-member _clazz method-key))
+          (find-member _clazzs method-key))))))
+
+
+(defn =>
+  "Immutable Javascript-inspired objects.  Mainly because sometimes overriding \"methods\" helps testability.
+
+   * => works the same way for retrieving both property values and invoking methods.  (Uniform access principle.)
+   * Uses existing let-map and letfn-map for constructing objects.
+
+   A few examples:
+
+   ```
+   (def p (let-map
+    [first-name \"Fred\"
+     last-name  \"Flintstone\"
+     methods   (letfn-map
+      [(full-name [] (str first-name \" \" last-name)])]))
+
+   (=> p :first-name)  ; => \"Fred\"
+   (=> p :full-name)   ; => \"Fred Flinstone\"
+   ```
+
+   A class just needs a constructor function that builds the thing it's named after.
+
+   ```
+   (defn Person [first-name last-name]
+    (let-map
+     [first-name first-name
+      last-name  last-name
+      methods    (letfn-map
+       [(full-name [this] (str first-name \" \" last-name)])]))
+   ```
+
+   Extend a class by providing one or more :parent-classes.
+
+   ```
+   (defn Flintstone [first-name last-name]
+    (let-map
+     [pet \"Dino\"
+      parent-classes (Person first-name last-name)]))
+   ```"
+  [object-map method-key & arguments]
+  (let [args (concat [object-map] (if arguments arguments []))
+        f    (find-member object-map method-key)]
+    (if (and f (fn? f))
+      (apply f args)
+      (if-not (nil? f)
+        f
+        (throw (IllegalArgumentException. (str method-key " is undefined")))))))
