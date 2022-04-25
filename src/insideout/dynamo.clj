@@ -3,43 +3,17 @@
   (:require
    [from.cemerick.pomegranate        :as pom]
    [from.cemerick.pomegranate.aether :as a]
-   [ns-tracker.core                  :as nt])
+   [loader.classpath                 :as cp])
   (:import
    [clojure.lang DynamicClassLoader]
    [java.io File]))
 
 
 (def ^:dynamic *extra-repositories*
-  "Extra repositories in addition to Maven Central and Clojars. Default={}.
+  "Extra repositories in addition to Maven Central and Clojars. Default=[].
   Future: Use the `eclipse-repo` function to obtain an Eclipse P2 repository configuration
   if you want to add Eclipse/P2 dependencies."
   [])
-
-(def ^:private dynamo-loader (atom nil))
-
-(defn ^DynamicClassLoader
-  dyn-classloader
-  "Return the dynamic classloader for the thread's context classloader.  If a dynamic
-  classloader hasn't been added to the current thread, one is registered."
-  []
-  (let [cl (-> (Thread/currentThread) .getContextClassLoader)]
-    (if (instance? DynamicClassLoader cl)
-      (reset! dynamo-loader cl)
-      (let [dcl (or @dynamo-loader (DynamicClassLoader. cl))]
-        (-> (Thread/currentThread) (.setContextClassloader dcl))
-        (reset! dynamo-loader dcl)))))
-
-
-(defn ^Thread new-thread
-  "Return a new thread preconfigured with the dynamo classloader.  Doesn't call `start`."
-  ([]
-   (let [t (Thread.)]
-     (.setContextClassloader t (dyn-classloader))
-     t))
-  ([runnable]
-   (let [t (Thread. runnable)]
-     (.setContextClassloader t (dyn-classloader))
-     t)))
 
 
 (defn resolver
@@ -51,6 +25,7 @@
 
 
 (comment
+  "WIP"
 
   (nth [1 2] 2)
   (count [1 2])
@@ -80,7 +55,7 @@
                                               {"clojars" "https://clojars.org/repo"}
                                               *extra-repositories*)))
   ([coordinates]
-   (resolve-libs (dyn-classloader) coordinates)))
+   (resolve-libs (cp/dyn-classloader) coordinates)))
 
 
 (defn require-libs
@@ -102,7 +77,7 @@
        (require require-params))))
 
   ([coordinates require-params]
-   (require-libs (dyn-classloader) coordinates require-params)))
+   (require-libs (cp/dyn-classloader) coordinates require-params)))
 
 
 ;; This has to be a macro because `import` is a macro and has to
@@ -122,46 +97,8 @@
                     (map (fn [i] `(import ~i)) import-params)
                     [`(import ~import-params)]))]
     `(do
-       (resolve-libs (dyn-classloader) ~coordinates)
+       (resolve-libs (cp/dyn-classloader) ~coordinates)
        ~@imports)))
-
-
-(defn add-urls-to-classpath
-  "Adds the specified URLs to the classpath."
-  [urls]
-  (let [cl ^DynamicClassLoader (dyn-classloader)]
-    (doseq [u urls]
-      (.addURL cl u))))
-
-
-(defn find-src+test+res
-  ([]
-   (find-src+test+res (File. ".")))
-  ([root-path]
-   (let [conv-over-config [["src/main/clojure" "src/clojure" "src/main" "src"]
-                           ["src/main/resources" "src/resources" "resources"]
-                           ["src/test/clojure" "test/clojure" "src/test" "test"]]]
-     (mapcat
-       (fn [paths]
-         (take 1 (filter #(->> (File. root-path %) (.exists)) paths)))
-       conv-over-config))))
-
-(def ^:dynamic *classpath-dirs*
-  (map (fn [rel-path] (-> rel-path File. .toURL))
-       (find-src+test+res)))
-
-(def out-of-date-namespaces (nt/ns-tracker (find-src+test+res)))
-
-
-;; Filesystem event handling
-#_(defn init-project [p]
-    (println (str "Initializing project " p)))
-
-
-(defn add-source-folders-to-classpath
-  "Adds the java.io.File objects in *classpath-dirs* to the classpath."
-  []
-  (add-urls-to-classpath *classpath-dirs*))
 
 
 (defn classloader-hierarchy
@@ -179,7 +116,7 @@
 (comment
   (->> "src" File. .toURL)
 
-  (let [^DynamicClassLoader cl (dyn-classloader)]
+  (let [^DynamicClassLoader cl (cp/dyn-classloader)]
     (-> cl (.addURL (->> "src" File. .toURL))))
 
   ;; Need service classloader management life cycle
